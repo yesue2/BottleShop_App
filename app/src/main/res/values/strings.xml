@@ -3,6 +3,4 @@
     <string name="home">홈</string>
     <string name="chat">채팅</string>
     <string name="info">정보</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
