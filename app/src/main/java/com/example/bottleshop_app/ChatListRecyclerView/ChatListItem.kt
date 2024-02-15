@@ -1,9 +1,7 @@
 package com.example.bottleshop_app.ChatListRecyclerView
 
-import android.media.Image
-
 data class ChatListItem(
-    val profile:Int,
-    val storeName:String,
-    val endContent:String
+    var profile:Int? = null,  // TODO(Url로 받아와서 String 형으로 수정 필요)
+    var storeName:String? = null,
+    var endContent:String? = null
 )
