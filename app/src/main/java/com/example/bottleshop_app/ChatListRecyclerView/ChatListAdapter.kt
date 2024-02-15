@@ -8,13 +8,16 @@ import com.example.bottleshop_app.databinding.ItemChatListBinding
 class ChatListAdapter(private val chatListItem: MutableList<ChatListItem>) :
     RecyclerView.Adapter<ChatListAdapter.ChatListViewHolder>() {
 
-    inner class ChatListViewHolder(binding: ItemChatListBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ChatListViewHolder(binding: ItemChatListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         val profile = binding.profile
         val storeName = binding.storeName
         val endContent = binding.endContent
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatListViewHolder {
-        val binding = ItemChatListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemChatListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ChatListViewHolder(binding)
     }
 
@@ -27,5 +30,4 @@ class ChatListAdapter(private val chatListItem: MutableList<ChatListItem>) :
     override fun getItemCount(): Int {
         return chatListItem.size
     }
-
 }
