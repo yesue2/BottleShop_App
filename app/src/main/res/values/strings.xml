@@ -3,4 +3,5 @@
     <string name="home">홈</string>
     <string name="chat">채팅</string>
     <string name="info">정보</string>
+    <string name="homeSearchViewHint">원하는 지역의 가게를 검색하세요</string>
 </resources>
