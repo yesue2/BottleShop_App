@@ -5,4 +5,9 @@
     <string name="info">정보</string>
     <string name="homeSearchViewHint">원하는 지역의 가게를 검색할 수 있어요</string>
     <string name="chatSearchViewHint">채팅방을 검색해보세요</string>
+    <string name="login">로그인</string>
+    <string name="join">회원가입</string>
+    <string name="already"><u>이미 회원이시라면</u></string>
+    <string name="no"><u>아직 회원이 아니시라면</u></string>
+    <string name="search_password"><u>비밀번호가 생각나지 않으시나요?</u></string>
 </resources>

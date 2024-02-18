@@ -7,4 +7,5 @@
     <color name="gray2">#F0F0F0</color>
     <color name="toolbar">#922B2B</color>
     <color name="translucentBlack">#8A000000</color>
+    <color name="hint">#BCBCBC</color>
 </resources>
