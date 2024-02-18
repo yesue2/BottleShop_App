@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bottleshop_app.databinding.ActivityStartBinding
 
-class StartActivity : AppCompatActivity(){
+class StartActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStartBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,7 +15,7 @@ class StartActivity : AppCompatActivity(){
         setOnClickBtn()
     }
 
-    fun setOnClickBtn() {
+    private fun setOnClickBtn() {
         val btn_start_login = binding.btnStartLogin
         val btn_start_join = binding.btnStartJoin
 
@@ -29,5 +29,4 @@ class StartActivity : AppCompatActivity(){
             startActivity(intent)
         }
     }
-
 }
