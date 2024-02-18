@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.bottleshop_app.ChatListRecyclerView.ChatListAdapter
-import com.example.bottleshop_app.ChatListRecyclerView.ChatListItem
+import com.example.bottleshop_app.chatListRecyclerView.ChatListAdapter
+import com.example.bottleshop_app.chatListRecyclerView.ChatListItem
 import com.example.bottleshop_app.databinding.FragmentChatBinding
 
 class ChatFragment : Fragment() {

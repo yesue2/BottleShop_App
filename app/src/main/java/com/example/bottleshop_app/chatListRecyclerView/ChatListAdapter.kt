@@ -1,4 +1,4 @@
-package com.example.bottleshop_app.ChatListRecyclerView
+package com.example.bottleshop_app.chatListRecyclerView
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

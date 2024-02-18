@@ -1,4 +1,4 @@
-package com.example.bottleshop_app.ChatListRecyclerView
+package com.example.bottleshop_app.chatListRecyclerView
 
 data class ChatListItem(
     var profile:Int? = null,  // TODO(Url로 받아와서 String 형으로 수정 필요)
