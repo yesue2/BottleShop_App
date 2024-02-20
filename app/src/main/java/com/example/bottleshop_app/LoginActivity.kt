@@ -14,7 +14,7 @@ import com.google.firebase.auth.auth
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
-    private var user: FirebaseUser? = null
+    var user: FirebaseUser? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,6 +56,8 @@ class LoginActivity : AppCompatActivity() {
         msg_search_password.setOnClickListener {
             // TODO(비밀번호 재설정 할 이메일 입력 팝업 출력 코드 작성)
         }
+
+        // TODO(비밀번호 입력 시 글자 숨기기 코드 작성)
     }
 
     // 로그인
