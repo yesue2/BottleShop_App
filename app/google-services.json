@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "287797695021",
+    "project_id": "bottleshop-dfc62",
+    "storage_bucket": "bottleshop-dfc62.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287797695021:android:2d69bc37f5371c1a8f5ea4",
+        "android_client_info": {
+          "package_name": "com.example.bottleshop_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO4g9mYTJqhsd25nSEKRnibDX_c-HBm0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

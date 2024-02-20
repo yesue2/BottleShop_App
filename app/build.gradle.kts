@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -68,9 +69,18 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.3")
 
     // Coroutine
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
 
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+
+    // Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
+    // Firebase Analytics
+    implementation("com.google.firebase:firebase-analytics")
+    // Firebase Authentication
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-auth:22.3.1")
+
 }
