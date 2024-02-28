@@ -85,6 +85,6 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:22.3.1")
 
     // Kakao Map API SDK
-    implementation("com.kakao.maps.open:android:2.6.0")
+    implementation("com.kakao.maps.open:android:2.8.5")
 
 }

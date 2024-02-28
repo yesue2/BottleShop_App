@@ -1,6 +1,7 @@
 package com.example.bottleshop_app
 
 import android.R
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -21,13 +22,11 @@ import com.kakao.vectormap.MapView
 class MapFragment : Fragment() {
     private lateinit var binding: FragmentMapBinding
 
+    private lateinit var mActivity: MainActivity
+
     private var mapView: KakaoMap? = null
     private val startZoomLevel = 15
-
-    // TODO(위도와 경도 HomeFragment 에서 가져오기)
-    val locationProvider = LocationProvider(requireContext())
-    var currentLat = locationProvider.getLocationLatitude()
-    var currentLng = locationProvider.getLocationLongitude()
+    private lateinit var startPosition: LatLng
 
     // MapLifeCycleCallback 을 통해 지도의 LifeCycle 관련 이벤트를 수신
     private val lifeCycleCallback: MapLifeCycleCallback = object : MapLifeCycleCallback() {
@@ -37,7 +36,6 @@ class MapFragment : Fragment() {
 
         override fun onMapError(error: Exception) {  // 인증 실패 및 지도 사용 중 에러가 발생할 때 호출됨
             Log.e("k3f", "onMapError: ${error.message}")
-            Toast.makeText(requireContext(), error.message, Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -59,7 +57,7 @@ class MapFragment : Fragment() {
         }
 
         override fun getPosition(): LatLng {  // 지도 시작 시 위치 좌표를 설정
-            return LatLng.from(currentLat, currentLng)
+            return startPosition
         }
 
         override fun getZoomLevel(): Int {  // 지도 시작 시 확대/축소 줌 레벨 설정
@@ -67,11 +65,24 @@ class MapFragment : Fragment() {
         }
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mActivity = context as MainActivity
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMapBinding.inflate(layoutInflater)
+
+        val locationProvider = LocationProvider(mActivity)
+        val uLatitude = locationProvider.getLocationLatitude()
+        val uLongtitude = locationProvider.getLocationLongitude()
+        Log.d("MyTag", "Latitude: $uLatitude, Longitude: $uLongtitude")
+
+        // 원래 startPosition = LatLng.from(uLatitude, uLongtitude) 코드 이지만,
+        // 현재 애뮬레이터라 현위치 받아오기가 불가능해서 판교역으로 처음 위치 설정 => 실제 핸드폰으로 실행 시 위의 코드로 바꿔주면 현위치로 잡힘
+        startPosition = LatLng.from(37.394660,127.111182)
 
         val mapView: MapView = binding.mapViewWhole
         mapView.start(lifeCycleCallback, readyCallback)

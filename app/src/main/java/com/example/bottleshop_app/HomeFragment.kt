@@ -7,7 +7,6 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.LocationManager
-import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
@@ -38,10 +37,6 @@ class HomeFragment : Fragment() {
     private var user: FirebaseUser? = null
 
     private lateinit var mActivity: MainActivity
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        mActivity = context as MainActivity
-    }
 
     // 런타임 권한 요청 시 필요한 요청 코드
     private val PERMISSIONS_REQUEST_CODE = 100
@@ -84,6 +79,10 @@ class HomeFragment : Fragment() {
         }
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mActivity = context as MainActivity
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -95,6 +94,8 @@ class HomeFragment : Fragment() {
         Log.d("MyTag", "HomeFragment user info: ${user}")
 
         checkAllPermissions()
+
+        setOnClickBtn()
 
         return binding.root
     }
@@ -135,9 +136,12 @@ class HomeFragment : Fragment() {
             val uLongtitude = locationProvider.getLocationLongitude()
             Log.d("MyTag", "Latitude: $uLatitude, Longitude: $uLongtitude")
 
-            startPosition = LatLng.from(uLatitude, uLongtitude)
+            // 원래 startPosition = LatLng.from(uLatitude, uLongtitude) 코드 이지만,
+            // 현재 애뮬레이터라 현위치 받아오기가 불가능해서 판교역으로 처음 위치 설정 => 실제 핸드폰으로 실행 시 위의 코드로 바꿔주면 현위치로 잡힘
+            startPosition = LatLng.from(37.394660,127.111182)
 
             val mapView: MapView = binding.mapView
+            // 맵 뷰 띄우기
             mapView.start(lifeCycleCallback, readyCallback)
         }
     }
@@ -180,5 +184,15 @@ class HomeFragment : Fragment() {
         })
         // 다이얼로그 생성 및 출력
         builder.create().show()
+    }
+
+    private fun setOnClickBtn() {
+        val btnViewMap = binding.btnViewMap
+        btnViewMap.setOnClickListener {
+            requireActivity().supportFragmentManager
+                .beginTransaction()
+                .add(R.id.mainFrameLayout, MapFragment())
+                .commitAllowingStateLoss()
+        }
     }
 }
