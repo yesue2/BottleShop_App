@@ -52,6 +52,7 @@ class HomeFragment : Fragment() {
     // 위치 서비스 요청 시 필요한 런처
     lateinit var getGPSPermissionLauncher: ActivityResultLauncher<Intent>
 
+    // 지도 관련
     private var mapView: KakaoMap? = null
     private val startZoomLevel = 15
     private lateinit var startPosition: LatLng
@@ -64,14 +65,13 @@ class HomeFragment : Fragment() {
 
         override fun onMapError(error: Exception) {  // 인증 실패 및 지도 사용 중 에러가 발생할 때 호출됨
             Log.e("k3f", "onMapError: ${error.message}")
-            Toast.makeText(mActivity, error.message, Toast.LENGTH_SHORT).show()
         }
     }
 
     // MapReadyCallback 을 통해 지도가 정상적으로 시작된 후에 수신
     private val readyCallback: KakaoMapReadyCallback = object : KakaoMapReadyCallback() {
         override fun onMapReady(kakaoMap: KakaoMap) {  // 인증 후 API 가 정상적으로 실행될 때 호출
-            Log.i("k3f", "startPosition: ${kakaoMap.cameraPosition!!.position.toString()}")
+            Log.i("k3f", "startPosition: ${kakaoMap.cameraPosition!!.position}")
             Log.i("k3f", "startZoomLevel: ${kakaoMap.zoomLevel}")
         }
 
@@ -83,12 +83,6 @@ class HomeFragment : Fragment() {
             return startZoomLevel
         }
     }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
