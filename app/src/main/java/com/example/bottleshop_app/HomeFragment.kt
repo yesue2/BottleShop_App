@@ -52,6 +52,7 @@ class HomeFragment : Fragment() {
     private val startZoomLevel = 15
     private lateinit var startPosition: LatLng
 
+
     // MapLifeCycleCallback 을 통해 지도의 LifeCycle 관련 이벤트를 수신
     private val lifeCycleCallback: MapLifeCycleCallback = object : MapLifeCycleCallback() {
         override fun onMapDestroy() {
@@ -68,6 +69,11 @@ class HomeFragment : Fragment() {
         override fun onMapReady(kakaoMap: KakaoMap) {  // 인증 후 API 가 정상적으로 실행될 때 호출
             Log.i("k3f", "startPosition: ${kakaoMap.cameraPosition!!.position}")
             Log.i("k3f", "startZoomLevel: ${kakaoMap.zoomLevel}")
+
+            //지도를 최대한 축소 할 수 있는 값
+            kakaoMap.getMinZoomLevel()
+            // 지도를 최대한 확대 할 수 있는 값
+            kakaoMap.getMaxZoomLevel()
         }
 
         override fun getPosition(): LatLng {  // 지도 시작 시 위치 좌표를 설정
